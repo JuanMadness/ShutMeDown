@@ -1,10 +1,11 @@
 package ShutMeDown.Logic.Shutdown;
 
+import java.io.IOException;
+
 public class ShutdownWin extends AbstractShutdown {
     @Override
-    public void shutdown() {
-        int tSeconds = 0; //Platzhalter
-        final String command = "shutdown -s -f -t " + tSeconds;
+    public void shutdown(final int pSeconds) {
+        final String command = "shutdown -s -f -t " + pSeconds;
         runCommand(command);
     }
 
