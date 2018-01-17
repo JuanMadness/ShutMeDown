@@ -4,6 +4,7 @@ import ShutMeDown.Logic.SystemInfo;
 
 public class Shutdown {
 
+    public static final int CANCEL_SHUTDOWN = 0;
     public static final int SHUTDOWN_COUNTDOWN = 1;
     public static final int SHUTDOWN_TIMER = 2;
 
@@ -23,8 +24,14 @@ public class Shutdown {
             tShutdown.shutdownCountdown(time[0], time[1], time[2]);
         } else if(pMode == SHUTDOWN_TIMER && time.length == 2) {
             tShutdown.shutdownOnTime(time[0], time[1]);
+        } else if(pMode == CANCEL_SHUTDOWN) {
+            tShutdown.cancelShutdown();
         } else {
             throw new IllegalArgumentException("False parameters!");
         }
+    }
+
+    public static void cancelShutdown() {
+        doShutdown(CANCEL_SHUTDOWN, null);
     }
 }
