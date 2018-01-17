@@ -33,6 +33,8 @@ public class Start {
                 default:
                     System.out.println("-nogui [timer|countdown|cancel] [hour|hours] [minute|minutes] [seconds]");
             }
+        } else {
+            // start GUI
         }
     }
 }

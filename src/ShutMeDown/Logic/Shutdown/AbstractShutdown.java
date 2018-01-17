@@ -11,7 +11,7 @@ public abstract class AbstractShutdown {
     public abstract void cancelShutdown();
 
     public void shutdownOnTime(final int pHour, final int pMinute) {
-
+        //Calculating Time or Thread witch looks for the right time
     }
 
     public void shutdownCountdown(final int pHours, final int pMinutes, final int pSeconds) {
