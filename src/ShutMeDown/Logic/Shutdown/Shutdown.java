@@ -16,7 +16,7 @@ public class Shutdown {
             tShutdown = new ShutdownLinux();
         } else if(tOS == SystemInfo.MAC_OS) {
             throw new IllegalArgumentException("Your OS is not supported!");
-        } else if(tOS == SystemInfo.UNKOWN_OS) {
+        } else if(tOS == SystemInfo.UNKNOWN_OS) {
             throw new IllegalArgumentException("Your OS is not supported!");
         }
         if(pMode == SHUTDOWN_COUNTDOWN && time.length == 3) {
