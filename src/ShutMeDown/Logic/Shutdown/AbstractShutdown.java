@@ -19,26 +19,24 @@ public abstract class AbstractShutdown {
         int tMinutes = 0;
         int tHoures = 0;
 
-        if(minuteNow != 0) {
-            tMinutes = 60 - minuteNow;
-            tHoures = -1;
-        }
-        tMinutes = pMinute;
-
         if(pHour < hourNow) {
-            tHoures = tHoures + 24 - hourNow + pHour;
+            tHoures = 24 - (hourNow - pHour);
         } else if(pHour > hourNow) {
-            tHoures = tHoures + pHour - hourNow;
-        } else if(pHour == hourNow) {
-            if(pMinute > minuteNow) {
-                tHoures = 0;
-            } else if(pMinute < minuteNow) {
-                tHoures = 23;
-                tMinutes = 60 - (minuteNow - pMinute);
-            } else if(pMinute == minuteNow) {
-                tHoures = 24;
-                tMinutes = 0;
-            }
+            tHoures = pHour - hourNow;
+        } else {
+            tHoures = 0;
+        }
+
+        if(pMinute < minuteNow) {
+            tMinutes = 60 - (minuteNow - pMinute);
+        } else if(pMinute > minuteNow) {
+            tMinutes = pMinute - minuteNow;
+        } else {
+            tMinutes = 0;
+        }
+
+        if(tHoures == 0 && tMinutes == 0) {
+            tHoures = 24;
         }
         //shutdownCountdown(tHoures, tMinutes, 0);
         System.out.println(tHoures + " " + tMinutes);

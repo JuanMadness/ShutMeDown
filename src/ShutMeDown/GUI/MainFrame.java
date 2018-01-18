@@ -51,7 +51,7 @@ public class MainFrame extends JFrame implements ActionListener {
         btnTimer.addActionListener(this);
         add(btnTimer);
 
-        btnCancel = new JButton("Cancel");
+        btnCancel = new JButton("Cancel Shutdown");
         btnCancel.setActionCommand("cancel");
         btnCancel.addActionListener(this);
         add(btnCancel);
@@ -61,15 +61,18 @@ public class MainFrame extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        int[] tTime = new int[3];
-        tTime[0] = Integer.parseInt(txtHour.getText());
-        tTime[1] = Integer.parseInt(txtMinute.getText());
-        tTime[2] = Integer.parseInt(txtSecond.getText());
         if(e.getActionCommand().equals("cancel")){
             Shutdown.cancelShutdown();
         } else if(e.getActionCommand().equals("countdown")) {
+            int[] tTime = new int[3];
+            tTime[0] = Integer.parseInt(txtHour.getText());
+            tTime[1] = Integer.parseInt(txtMinute.getText());
+            tTime[2] = Integer.parseInt(txtSecond.getText());
             Shutdown.doShutdown(Shutdown.SHUTDOWN_COUNTDOWN, tTime);
         } else if(e.getActionCommand().equals("timer")) {
+            int[] tTime = new int[2];
+            tTime[0] = Integer.parseInt(txtHour.getText());
+            tTime[1] = Integer.parseInt(txtMinute.getText());
             Shutdown.doShutdown(Shutdown.SHUTDOWN_TIMER, tTime);
         }
     }
