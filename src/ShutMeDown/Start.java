@@ -1,12 +1,13 @@
 package ShutMeDown;
 
 
+import ShutMeDown.GUI.MainFrame;
 import ShutMeDown.Logic.Shutdown.Shutdown;
 
 public class Start {
 
     public static void main(String args[]) {
-        if(args[0].equals("-nogui")) {
+        if(args.length != 0 && args[0].equals("-nogui")) {
             switch (args[1]){
                 case "timer":
                     if(args.length == 4) {
@@ -34,7 +35,7 @@ public class Start {
                     System.out.println("-nogui [timer|countdown|cancel] [hour|hours] [minute|minutes] [seconds]");
             }
         } else {
-            // start GUI
+            new MainFrame();
         }
     }
 }
