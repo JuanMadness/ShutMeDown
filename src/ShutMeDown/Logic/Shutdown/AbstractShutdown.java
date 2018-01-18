@@ -3,6 +3,7 @@ package ShutMeDown.Logic.Shutdown;
 import ShutMeDown.Logic.ConsoleCommand;
 
 import java.io.IOException;
+import java.util.Date;
 
 public abstract class AbstractShutdown {
 
@@ -11,11 +12,10 @@ public abstract class AbstractShutdown {
     public abstract void cancelShutdown();
 
     public void shutdownOnTime(final int pHour, final int pMinute) {
-        //Calculating Time or Thread witch looks for the right time
-        //placeholder
-        final int hourNow = 0;
-        final int minuteNow = 0;
-        //placeholder
+        Date tDate = new Date();
+        final int hourNow = tDate.getHours();
+        final int minuteNow = tDate.getMinutes();
+
         int tMinutes = 0;
         int tHoures = 0;
 
@@ -40,7 +40,8 @@ public abstract class AbstractShutdown {
                 tMinutes = 0;
             }
         }
-        shutdownCountdown(tHoures, tMinutes, 0);
+        //shutdownCountdown(tHoures, tMinutes, 0);
+        System.out.println(tHoures + " " + tMinutes);
     }
 
     public void shutdownCountdown(final int pHours, final int pMinutes, final int pSeconds) {
