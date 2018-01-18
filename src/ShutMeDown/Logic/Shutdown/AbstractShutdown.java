@@ -12,6 +12,35 @@ public abstract class AbstractShutdown {
 
     public void shutdownOnTime(final int pHour, final int pMinute) {
         //Calculating Time or Thread witch looks for the right time
+        //placeholder
+        final int hourNow = 0;
+        final int minuteNow = 0;
+        //placeholder
+        int tMinutes = 0;
+        int tHoures = 0;
+
+        if(minuteNow != 0) {
+            tMinutes = 60 - minuteNow;
+            tHoures = -1;
+        }
+        tMinutes = pMinute;
+
+        if(pHour < hourNow) {
+            tHoures = tHoures + 24 - hourNow + pHour;
+        } else if(pHour > hourNow) {
+            tHoures = tHoures + pHour - hourNow;
+        } else if(pHour == hourNow) {
+            if(pMinute > minuteNow) {
+                tHoures = 0;
+            } else if(pMinute < minuteNow) {
+                tHoures = 23;
+                tMinutes = 60 - (minuteNow - pMinute);
+            } else if(pMinute == minuteNow) {
+                tHoures = 24;
+                tMinutes = 0;
+            }
+        }
+        shutdownCountdown(tHoures, tMinutes, 0);
     }
 
     public void shutdownCountdown(final int pHours, final int pMinutes, final int pSeconds) {
