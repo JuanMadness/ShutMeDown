@@ -1,4 +1,4 @@
-package ShutMeDown.GUI;
+package ShutMeDown.GUI.SimpleGUI;
 
 import ShutMeDown.Logic.Shutdown.Shutdown;
 
