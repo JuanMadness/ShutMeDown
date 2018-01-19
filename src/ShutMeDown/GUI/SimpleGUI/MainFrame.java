@@ -71,27 +71,31 @@ public class MainFrame extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getActionCommand().equals("cancel")){
-            Shutdown.cancelShutdown();
-        } else if(e.getActionCommand().equals("countdown")) {
-            int[] tTime = new int[3];
-            tTime[0] = Integer.parseInt(txtHour.getText());
-            tTime[1] = Integer.parseInt(txtMinute.getText());
-            tTime[2] = Integer.parseInt(txtSecond.getText());
-            if(isGreaterZero(tTime)) {
-                Shutdown.doShutdown(Shutdown.SHUTDOWN_COUNTDOWN, tTime);
-            } else {
-                JOptionPane.showMessageDialog(this, "Only positive numbers allowed!", "Information", JOptionPane.INFORMATION_MESSAGE);
+        try {
+            if (e.getActionCommand().equals("cancel")) {
+                Shutdown.cancelShutdown();
+            } else if (e.getActionCommand().equals("countdown")) {
+                int[] tTime = new int[3];
+                tTime[0] = Integer.parseInt(txtHour.getText());
+                tTime[1] = Integer.parseInt(txtMinute.getText());
+                tTime[2] = Integer.parseInt(txtSecond.getText());
+                if (isGreaterZero(tTime)) {
+                    Shutdown.doShutdown(Shutdown.SHUTDOWN_COUNTDOWN, tTime);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Only positive numbers allowed!", "Information", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } else if (e.getActionCommand().equals("timer")) {
+                int[] tTime = new int[2];
+                tTime[0] = Integer.parseInt(txtHour.getText());
+                tTime[1] = Integer.parseInt(txtMinute.getText());
+                if (isGreaterZero(tTime)) {
+                    Shutdown.doShutdown(Shutdown.SHUTDOWN_TIMER, tTime);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Only positive numbers allowed!", "Information", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
-        } else if(e.getActionCommand().equals("timer")) {
-            int[] tTime = new int[2];
-            tTime[0] = Integer.parseInt(txtHour.getText());
-            tTime[1] = Integer.parseInt(txtMinute.getText());
-            if(isGreaterZero(tTime)) {
-                Shutdown.doShutdown(Shutdown.SHUTDOWN_TIMER, tTime);
-            } else {
-                JOptionPane.showMessageDialog(this, "Only positive numbers allowed!", "Information", JOptionPane.INFORMATION_MESSAGE);
-            }
+        } catch(NumberFormatException exception) {
+            JOptionPane.showMessageDialog(this, "Only numbers allowed!", "Information", JOptionPane.WARNING_MESSAGE);
         }
     }
 
