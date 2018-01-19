@@ -35,10 +35,10 @@ public abstract class AbstractShutdown {
             tMinutes = 0;
         }
 
-        if(tHoures == 0 && tMinutes == 0) {
-            tHoures = 24;
+        if(tHoures == 0 && pMinute <= minuteNow) {
+            tHoures = 23;
         }
-        //shutdownCountdown(tHoures, tMinutes, 0);
+        shutdownCountdown(tHoures, tMinutes, 0);
         System.out.println(tHoures + " " + tMinutes);
     }
 
