@@ -78,12 +78,27 @@ public class MainFrame extends JFrame implements ActionListener {
             tTime[0] = Integer.parseInt(txtHour.getText());
             tTime[1] = Integer.parseInt(txtMinute.getText());
             tTime[2] = Integer.parseInt(txtSecond.getText());
-            Shutdown.doShutdown(Shutdown.SHUTDOWN_COUNTDOWN, tTime);
+            if(isGreaterZero(tTime)) {
+                Shutdown.doShutdown(Shutdown.SHUTDOWN_COUNTDOWN, tTime);
+            } else {
+                JOptionPane.showMessageDialog(this, "Only positive numbers allowed!", "Information", JOptionPane.INFORMATION_MESSAGE);
+            }
         } else if(e.getActionCommand().equals("timer")) {
             int[] tTime = new int[2];
             tTime[0] = Integer.parseInt(txtHour.getText());
             tTime[1] = Integer.parseInt(txtMinute.getText());
-            Shutdown.doShutdown(Shutdown.SHUTDOWN_TIMER, tTime);
+            if(isGreaterZero(tTime)) {
+                Shutdown.doShutdown(Shutdown.SHUTDOWN_TIMER, tTime);
+            } else {
+                JOptionPane.showMessageDialog(this, "Only positive numbers allowed!", "Information", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
+    }
+
+    private boolean isGreaterZero(int[] pValues) {
+        for (Integer a: pValues) {
+            if(a < 0) return false;
+        }
+        return true;
     }
 }
