@@ -18,6 +18,7 @@ public class MainFrame extends JFrame implements ActionListener {
         setTitle("ShutMeDown SimpleGUI");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(500, 120);
+        setLocation(500, 500);
         setResizable(false);
 
         lblHour = new JLabel("Hours");
@@ -48,16 +49,19 @@ public class MainFrame extends JFrame implements ActionListener {
         add(txtSecond);
 
         btnCountdown = new JButton("Countdown");
+        btnCountdown.setBackground(Color.WHITE);
         btnCountdown.setActionCommand("countdown");
         btnCountdown.addActionListener(this);
         add(btnCountdown);
 
         btnTimer = new JButton("Timer");
+        btnTimer.setBackground(Color.WHITE);
         btnTimer.setActionCommand("timer");
         btnTimer.addActionListener(this);
         add(btnTimer);
 
         btnCancel = new JButton("Cancel Shutdown");
+        btnCancel.setBackground(Color.WHITE);
         btnCancel.setActionCommand("cancel");
         btnCancel.addActionListener(this);
         add(btnCancel);
