@@ -1,7 +1,7 @@
 package ShutMeDown;
 
 
-import ShutMeDown.GUI.MainFrame;
+import ShutMeDown.GUI.SimpleGUI.MainFrame;
 import ShutMeDown.Logic.Shutdown.Shutdown;
 
 public class Start {
