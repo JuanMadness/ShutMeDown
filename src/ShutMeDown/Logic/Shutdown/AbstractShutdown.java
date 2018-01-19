@@ -38,6 +38,7 @@ public abstract class AbstractShutdown {
         if(tHoures == 0 && tMinutes == 0) {
             tHoures = 24;
         }
+        tHoures = tHoures - 1;
         //shutdownCountdown(tHoures, tMinutes, 0);
         System.out.println(tHoures + " " + tMinutes);
     }
