@@ -23,14 +23,20 @@ public class MainFrame extends JFrame implements ActionListener {
 
         lblHour = new JLabel("Hours");
         lblHour.setHorizontalAlignment(JLabel.CENTER);
+        lblHour.setOpaque(true);
+        lblHour.setBackground(Color.WHITE);
         add(lblHour);
 
         lblMinute = new JLabel("Minutes");
         lblMinute.setHorizontalAlignment(JLabel.CENTER);
+        lblMinute.setOpaque(true);
+        lblMinute.setBackground(Color.WHITE);
         add(lblMinute);
 
         lblSecond = new JLabel("Seconds");
         lblSecond.setHorizontalAlignment(JLabel.CENTER);
+        lblSecond.setOpaque(true);
+        lblSecond.setBackground(Color.WHITE);
         add(lblSecond);
 
         txtHour = new JTextField();
