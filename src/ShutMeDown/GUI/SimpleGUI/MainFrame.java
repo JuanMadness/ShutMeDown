@@ -1,6 +1,7 @@
 package ShutMeDown.GUI.SimpleGUI;
 
 import ShutMeDown.Logic.Shutdown.Shutdown;
+import ShutMeDown.Logic.SystemInfo;
 
 import javax.swing.*;
 import java.awt.*;
@@ -73,6 +74,7 @@ public class MainFrame extends JFrame implements ActionListener {
         add(btnCancel);
 
         setVisible(true);
+        checkOScompatibility();
     }
 
     @Override
@@ -110,5 +112,11 @@ public class MainFrame extends JFrame implements ActionListener {
             if(a < 0) return false;
         }
         return true;
+    }
+
+    private void checkOScompatibility() {
+        if(SystemInfo.getOS() == SystemInfo.UNKNOWN_OS) {
+            dispose();
+        }
     }
 }
