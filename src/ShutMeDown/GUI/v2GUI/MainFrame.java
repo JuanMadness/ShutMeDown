@@ -9,6 +9,8 @@ public class MainFrame extends JFrame {
     private JPanel startPanel;
 
     public MainFrame() {
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setSize(500, 300);
         setLayout(new BorderLayout());
         add(BorderLayout.NORTH, menuPanel);
 
