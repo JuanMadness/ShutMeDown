@@ -15,29 +15,22 @@ public abstract class AbstractShutdown {
         Date tDate = new Date();
         final int hourNow = tDate.getHours();
         final int minuteNow = tDate.getMinutes();
+        final int dayInMin = 24 * 60;
 
-        int tMinutes = 0;
-        int tHoures = 0;
+        int tMinute = pHour * 60 + pMinute;
+        int tMinuteNow = hourNow * 60 + minuteNow;
 
-        if(pHour < hourNow) {
-            tHoures = 24 - (hourNow - pHour);
-        } else if(pHour > hourNow) {
-            tHoures = pHour - hourNow;
-        } else {
-            tHoures = 0;
+        if(tMinute < tMinuteNow) {
+            tMinute = dayInMin - tMinuteNow + tMinute;
+        } else if(tMinute > tMinuteNow) {
+            tMinute = tMinute - tMinuteNow;
+        } else if(tMinute == tMinuteNow) {
+            tMinute = dayInMin;
         }
 
-        if(pMinute < minuteNow) {
-            tMinutes = 60 - (minuteNow - pMinute);
-        } else if(pMinute > minuteNow) {
-            tMinutes = pMinute - minuteNow;
-        } else {
-            tMinutes = 0;
-        }
+        int tHoures = tMinute / 60;
+        int tMinutes = tMinute % 60;
 
-        if(tHoures == 0 && pMinute <= minuteNow) {
-            tHoures = 23;
-        }
         shutdownCountdown(tHoures, tMinutes, 0);
         System.out.println(tHoures + " " + tMinutes);
     }
