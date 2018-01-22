@@ -34,6 +34,10 @@ public class Start {
                 default:
                     System.out.println("-nogui [timer|countdown|cancel] [hour|hours] [minute|minutes] [seconds]");
             }
+        } else if(args.length != 0 && args[0].equals("-v2gui")) {
+
+        } else if(args.length != 0 && args[0].equals("-sgui")) {
+            new MainFrame();
         } else {
             new MainFrame();
         }
