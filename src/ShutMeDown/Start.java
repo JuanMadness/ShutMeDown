@@ -35,7 +35,7 @@ public class Start {
                     System.out.println("-nogui [timer|countdown|cancel] [hour|hours] [minute|minutes] [seconds]");
             }
         } else if(args.length != 0 && args[0].equals("-v2gui")) {
-
+            new ShutMeDown.GUI.v2GUI.MainFrame();
         } else if(args.length != 0 && args[0].equals("-sgui")) {
             new MainFrame();
         } else {
