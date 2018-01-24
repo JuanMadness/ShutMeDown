@@ -5,8 +5,10 @@ import java.awt.*;
 
 public class V2Button extends JButton {
 
+
+
     public V2Button() {
         setOpaque(true);
-        setBackground(Color.WHITE);
+        setBackground(V2Color.GREEN);
     }
 }
