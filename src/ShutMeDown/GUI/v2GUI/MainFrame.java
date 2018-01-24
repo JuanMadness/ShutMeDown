@@ -11,6 +11,8 @@ public class MainFrame extends JFrame {
     public MainFrame() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(500, 300);
+        setLocation(300, 300);
+        setTitle("ShutMeDown by JuanMadness");
         setLayout(new BorderLayout());
         add(BorderLayout.NORTH, menuPanel);
 
