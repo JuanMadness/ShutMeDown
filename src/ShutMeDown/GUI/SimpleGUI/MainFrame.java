@@ -96,7 +96,7 @@ public class MainFrame extends JFrame implements ActionListener {
                 int[] tTime = new int[2];
                 tTime[0] = Integer.parseInt(txtHour.getText());
                 tTime[1] = Integer.parseInt(txtMinute.getText());
-                if (isGreaterZero(tTime)) {
+                if (isGreaterZero(tTime) && isGreater23(tTime)) {
                     Shutdown.doShutdown(Shutdown.SHUTDOWN_TIMER, tTime);
                 } else {
                     JOptionPane.showMessageDialog(this, "Only positive numbers allowed!", "Information", JOptionPane.INFORMATION_MESSAGE);
@@ -113,6 +113,14 @@ public class MainFrame extends JFrame implements ActionListener {
         }
         return true;
     }
+
+    private boolean isGreater23(int[] pValues) {
+        if(pValues[0] > 23) return false;
+        if(pValues[1] > 59) return false;
+        return true;
+    }
+
+
 
     private void checkOScompatibility() {
         if(SystemInfo.getOS() == SystemInfo.UNKNOWN_OS) {
