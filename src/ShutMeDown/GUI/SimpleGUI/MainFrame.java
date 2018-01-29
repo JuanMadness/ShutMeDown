@@ -90,7 +90,7 @@ public class MainFrame extends JFrame implements ActionListener {
                 if (isGreaterZero(tTime)) {
                     Shutdown.doShutdown(Shutdown.SHUTDOWN_COUNTDOWN, tTime);
                 } else {
-                    JOptionPane.showMessageDialog(this, "Only positive numbers allowed!", "Information", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "ShutdownCountdown: Wrong use!", "Information", JOptionPane.INFORMATION_MESSAGE);
                 }
             } else if (e.getActionCommand().equals("timer")) {
                 int[] tTime = new int[2];
@@ -99,11 +99,11 @@ public class MainFrame extends JFrame implements ActionListener {
                 if (isGreaterZero(tTime) && isGreater23(tTime)) {
                     Shutdown.doShutdown(Shutdown.SHUTDOWN_TIMER, tTime);
                 } else {
-                    JOptionPane.showMessageDialog(this, "Only positive numbers allowed!", "Information", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "ShutdownTimer: Wrong use!", "Information", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         } catch(NumberFormatException exception) {
-            JOptionPane.showMessageDialog(this, "Only numbers allowed!", "Information", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Wrong use! Only numbers allowed!", "Information", JOptionPane.WARNING_MESSAGE);
         }
     }
 
