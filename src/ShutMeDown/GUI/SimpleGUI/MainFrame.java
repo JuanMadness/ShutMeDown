@@ -79,6 +79,15 @@ public class MainFrame extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(txtSecond.getText().trim().equals("")) {
+            txtSecond.setText("0");
+        }
+        if(txtMinute.getText().trim().equals("")) {
+            txtMinute.setText("0");
+        }
+        if(txtHour.getText().trim().equals("")) {
+            txtHour.setText("0");
+        }
         try {
             if (e.getActionCommand().equals("cancel")) {
                 Shutdown.cancelShutdown();
