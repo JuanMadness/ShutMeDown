@@ -74,7 +74,6 @@ public class MainFrame extends JFrame implements ActionListener {
         add(btnCancel);
 
         setVisible(true);
-        checkOScompatibility();
     }
 
     @Override
@@ -127,13 +126,5 @@ public class MainFrame extends JFrame implements ActionListener {
         if(pValues[0] > 23) return false;
         if(pValues[1] > 59) return false;
         return true;
-    }
-
-
-
-    private void checkOScompatibility() {
-        if(SystemInfo.getOS() == SystemInfo.UNKNOWN_OS) {
-            dispose();
-        }
     }
 }
