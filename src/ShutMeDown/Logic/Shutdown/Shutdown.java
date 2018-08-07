@@ -9,7 +9,7 @@ public class Shutdown {
     public static final int SHUTDOWN_TIMER = 2;
 
     public static void doShutdown(final int pMode, final int[] time) {
-        AbstractShutdown tShutdown = new ShutdownWin();
+        AbstractShutdown tShutdown = null;
         final int tOS = SystemInfo.getOS();
         if(tOS == SystemInfo.WINDOWS) {
             tShutdown = new ShutdownWin();

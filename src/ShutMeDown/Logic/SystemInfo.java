@@ -7,27 +7,41 @@ public class SystemInfo {
     public static final int WINDOWS = 2;
     public static final int MAC_OS = 3;
 
-    public static int getOS(){
-        final String tOS = System.getProperty("os.name");
-        System.out.println("Detected OS: " + tOS);
-        switch (tOS) {
-            case "Linux":
-                return LINUX;
-            case "Windows XP":
-                return WINDOWS;
-            case "Windows Vista":
-                return WINDOWS;
-            case "Windows 7":
-                return WINDOWS;
-            case "Windows 8":
-                return WINDOWS;
-            case "Windows 8.1":
-                return WINDOWS;
-            case "Windows 10":
-                return WINDOWS;
-            default:
-                return UNKNOWN_OS;
+    private static int currentOS = 0;
+    private static boolean isOSSet = false;
 
+    public static int getOS(){
+        if (!isOSSet) {
+            final String tOS = System.getProperty("os.name");
+            System.out.println("Detected OS: " + tOS);
+            switch (tOS) {
+                case "Linux":
+                    currentOS = LINUX;
+                    break;
+                case "Windows XP":
+                    currentOS = WINDOWS;
+                    break;
+                case "Windows Vista":
+                    currentOS = WINDOWS;
+                    break;
+                case "Windows 7":
+                    currentOS = WINDOWS;
+                    break;
+                case "Windows 8":
+                    currentOS = WINDOWS;
+                    break;
+                case "Windows 8.1":
+                    currentOS = WINDOWS;
+                    break;
+                case "Windows 10":
+                    currentOS = WINDOWS;
+                    break;
+                default:
+                    currentOS = UNKNOWN_OS;
+                    break;
+            }
+            isOSSet = true;
         }
+        return currentOS;
     }
 }
