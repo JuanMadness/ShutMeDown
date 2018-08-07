@@ -16,7 +16,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
     public MainFrame() {
         setLayout(new GridLayout(3,3));
-        setTitle("ShutMeDown SimpleGUI");
+        setTitle("ShutMeDown");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(500, 120);
         setLocation(500, 500);
