@@ -2,7 +2,6 @@ package ShutMeDown;
 
 
 import ShutMeDown.GUI.SimpleGUI.MainFrame;
-import ShutMeDown.Logic.Shutdown.Shutdown;
 import ShutMeDown.Logic.SystemInfo;
 
 import javax.swing.*;

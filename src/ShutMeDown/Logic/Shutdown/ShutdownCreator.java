@@ -2,7 +2,7 @@ package ShutMeDown.Logic.Shutdown;
 
 import ShutMeDown.Logic.SystemInfo;
 
-public class Shutdown {
+public class ShutdownCreator {
 
     public static final int CANCEL_SHUTDOWN = 0;
     public static final int SHUTDOWN_COUNTDOWN = 1;
