@@ -6,6 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class MainFrame extends JFrame implements ActionListener {
 
@@ -89,6 +92,7 @@ public class MainFrame extends JFrame implements ActionListener {
         try {
             if (e.getActionCommand().equals("cancel")) {
                 ShutdownCreator.cancelShutdown();
+                JOptionPane.showMessageDialog(this, "Shutdown canceled!", "Shutdown", JOptionPane.INFORMATION_MESSAGE);
             } else if (e.getActionCommand().equals("countdown")) {
                 int[] tTime = new int[3];
                 tTime[0] = Integer.parseInt(txtHour.getText());
@@ -96,6 +100,7 @@ public class MainFrame extends JFrame implements ActionListener {
                 tTime[2] = Integer.parseInt(txtSecond.getText());
                 if (isGreaterZero(tTime)) {
                     ShutdownCreator.doShutdown(ShutdownCreator.SHUTDOWN_COUNTDOWN, tTime);
+                    showTimeMsg(tTime[0], tTime[1], ShutdownCreator.SHUTDOWN_COUNTDOWN);
                 } else {
                     JOptionPane.showMessageDialog(this, "ShutdownCountdown: Wrong use!", "Information", JOptionPane.INFORMATION_MESSAGE);
                 }
@@ -105,6 +110,7 @@ public class MainFrame extends JFrame implements ActionListener {
                 tTime[1] = Integer.parseInt(txtMinute.getText());
                 if (isGreaterZero(tTime) && isGreater23(tTime)) {
                     ShutdownCreator.doShutdown(ShutdownCreator.SHUTDOWN_TIMER, tTime);
+                    showTimeMsg(tTime[0], tTime[1], ShutdownCreator.SHUTDOWN_TIMER);
                 } else {
                     JOptionPane.showMessageDialog(this, "ShutdownTimer: Wrong use!", "Information", JOptionPane.INFORMATION_MESSAGE);
                 }
@@ -125,5 +131,35 @@ public class MainFrame extends JFrame implements ActionListener {
         if(pValues[0] > 23) return false;
         if(pValues[1] > 59) return false;
         return true;
+    }
+
+    private void showTimeMsg(int pHours, int pMinute, int pShutdownType) {
+        String stringHour = null;
+        String stringMinute = null;
+        if (pShutdownType == ShutdownCreator.SHUTDOWN_COUNTDOWN) {
+            Date tDate = new Date();
+            Calendar tCalendar = GregorianCalendar.getInstance();
+            tCalendar.setTime(tDate);
+            tCalendar.add(Calendar.MINUTE, pMinute);
+            tCalendar.add(Calendar.HOUR_OF_DAY, pHours);
+
+            stringHour = String.valueOf(tCalendar.get(Calendar.HOUR_OF_DAY));
+            stringMinute = String.valueOf(tCalendar.get(Calendar.MINUTE));
+        }
+        if (pShutdownType == ShutdownCreator.SHUTDOWN_TIMER) {
+            stringHour = String.valueOf(pHours);
+            stringMinute = String.valueOf(pMinute);
+        }
+
+
+        if (stringHour.length() == 1) {
+            stringHour = "0" + stringHour;
+        }
+        if (stringMinute.length() == 1) {
+            stringMinute = "0" + stringMinute;
+        }
+
+        JOptionPane.showMessageDialog(this, "Planned shutdown at " + stringHour + ":"
+                + stringMinute, "Shutdown", JOptionPane.INFORMATION_MESSAGE);
     }
 }
