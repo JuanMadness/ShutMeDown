@@ -3,7 +3,9 @@ package ShutMeDown.Logic.Shutdown;
 import ShutMeDown.Logic.ConsoleCommand;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public abstract class AbstractShutdown {
 
@@ -13,8 +15,12 @@ public abstract class AbstractShutdown {
 
     public void shutdownOnTime(final int pHour, final int pMinute) {
         Date tDate = new Date();
-        final int hourNow = tDate.getHours();
-        final int minuteNow = tDate.getMinutes();
+        Calendar tCalendar = GregorianCalendar.getInstance();
+        tCalendar.setTime(tDate);
+
+
+        final int hourNow = tCalendar.get(Calendar.HOUR_OF_DAY);
+        final int minuteNow = tCalendar.get(Calendar.MINUTE);
         final int dayInMin = 24 * 60;
 
         int tMinute = pHour * 60 + pMinute;
