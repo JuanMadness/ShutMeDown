@@ -46,11 +46,4 @@ public abstract class AbstractShutdown {
         shutdown(tSeconds);
     }
 
-    protected void runCommand(final String pCommand){
-        try {
-            ConsoleCommand.runCmd(pCommand);
-        } catch (IOException e) {
-            System.out.println("Can´t run shutdown-Command!");
-        }
-    }
 }
